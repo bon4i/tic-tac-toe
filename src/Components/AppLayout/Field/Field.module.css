@@ -1,0 +1,17 @@
+.game-filed {
+    height: 210px;
+    width: 270px;
+    margin: 10px 40px 20px 40px;
+    background-color: #fff;
+    border: 1px solid #727171;
+}
+
+button {
+    height: 70px;
+    width: 90px;
+    text-transform: uppercase;
+    text-align: center;
+    border: 1px solid #807d7d;
+    color: rgb(249, 95, 95);
+    font-size: 16px;
+}
