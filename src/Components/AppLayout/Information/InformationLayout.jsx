@@ -3,7 +3,6 @@ import styles from './Information.module.css';
 export const InformationLayout = ({isDraw, isGameEnded, currentPlayer}) => {
 	return(
 		<div className={styles['information-container']}>
-			<div className={styles['current-move']}></div>
 			<div className={`${styles['current-winner']} ${currentPlayer === 'X' ? styles['red'] : styles['blue']}`}>
 				{isDraw
 					? 'Ничья'

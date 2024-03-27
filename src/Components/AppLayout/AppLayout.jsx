@@ -6,9 +6,8 @@ import { InformationContainer } from "./Information/InformationContainer";
 export const AppLayout = (props) => {
 	return(
 		<div>
-			<InformationContainer {...props}
-			/>
-			<FieldContainer {...props}/>
+			<InformationContainer {...props} />
+			<FieldContainer {...props} />
 			<div className={styles['restart-container']}>
 				<button
 					className={styles['restart-button']}
