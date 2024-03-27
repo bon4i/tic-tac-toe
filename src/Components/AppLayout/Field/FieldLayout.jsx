@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import styles from './Field.module.css';
 export const FieldLayout = ({field, handleClickCellButtons}) => {
 	return(
@@ -8,7 +9,9 @@ export const FieldLayout = ({field, handleClickCellButtons}) => {
 						key={index}
 						id={index}
 						onClick={() => handleClickCellButtons(index)}
-						className={styles['cell-button']}
+						className={`${styles['cell-button']} ${
+							item === 'X' ? styles['red'] : styles['blue']
+						}`}
 					>
 						{item}
 					</button>
@@ -17,3 +20,8 @@ export const FieldLayout = ({field, handleClickCellButtons}) => {
 		</div>
 	)
 }
+
+FieldLayout.propTypes = {
+	field: PropTypes.array,
+	handleClickCellButtons: PropTypes.func,
+};

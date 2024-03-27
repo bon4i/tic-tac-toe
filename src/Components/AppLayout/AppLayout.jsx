@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import styles from './AppLayout.module.css';
 import { FieldContainer } from "./Field/FieldContainer";
 import { InformationContainer } from "./Information/InformationContainer";
@@ -19,3 +20,8 @@ export const AppLayout = (props) => {
 		</div>
 	);
 }
+
+AppLayout.propTypes = {
+	handleResetGame: PropTypes.func,
+}
+

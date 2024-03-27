@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
 import styles from './App.module.css';
 import { AppLayout } from './Components/AppLayout/AppLayout';
+import { WIN_PATTERNS } from './data/data.js';
 
 export const App = () => {
-    let [currentPlayer, setCurrentPlayer] = useState('X');
+    const fieldArray = ['', '', '', '', '', '', '', '', ''];
+    const [currentPlayer, setCurrentPlayer] = useState('X');
     const [isGameEnded, setIsGameEnded] = useState(false);
     const [isDraw, setIsDraw] = useState(false);
-    const fieldArray = ['', '', '', '', '', '', '', '', ''];
     const [field, setField] = useState(fieldArray);
 
     const handleClickCellButtons = (id) => {
@@ -14,8 +15,18 @@ export const App = () => {
         if (field[id] === '' && !isGameEnded) {
             updateField[id] = currentPlayer;
             setField(updateField);
-            setCurrentPlayer(currentPlayer === 'X' ? '0' : 'X');
+        } else return false;
+
+        if (checkForWinner(updateField, currentPlayer)) {
+            setIsGameEnded(true);
+            return false;
+        } else if (
+            !checkForWinner(updateField, currentPlayer) &&
+            !updateField.some((element) => element === '')
+        ) {
+            setIsDraw(true);
         }
+        setCurrentPlayer(currentPlayer === 'X' ? '0' : 'X');
     };
 
     const handleResetGame = () => {
@@ -23,6 +34,12 @@ export const App = () => {
         setIsGameEnded(false);
         setIsDraw(false);
         setField(fieldArray);
+    };
+
+    const checkForWinner = (cells, player) => {
+        return WIN_PATTERNS.some((element) =>
+            element.every((item) => cells[item] === player),
+        );
     };
 
     return (
