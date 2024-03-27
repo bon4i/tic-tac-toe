@@ -1,23 +1,20 @@
-import { useState } from 'react';
 import styles from './AppLayout.module.css';
 import { FieldContainer } from "./Field/FieldContainer";
 import { InformationContainer } from "./Information/InformationContainer";
 
-export const AppLayout = () => {
-	const [currentPlayer, setCurrentPlayer] = useState('x');
-	const [isGameEnded] = useState(false);
-	const [isDraw] = useState(false);
-	const field = [
-		'', '', '',
-		'', '', '',
-		'', '', '',
-	]
+export const AppLayout = (props) => {
 	return(
 		<div>
-			<InformationContainer />
-			<FieldContainer />
+			<InformationContainer {...props}
+			/>
+			<FieldContainer {...props}/>
 			<div className={styles['restart-container']}>
-				<button className={styles['restart-button']}>Начать заново</button>
+				<button
+					className={styles['restart-button']}
+					onClick={() => props.handleResetGame()}
+				>
+					Начать заново
+				</button>
 			</div>
 		</div>
 	);

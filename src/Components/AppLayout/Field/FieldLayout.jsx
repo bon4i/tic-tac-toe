@@ -1,22 +1,19 @@
 import styles from './Field.module.css';
-export const FieldLayout = ({filed}) => {
+export const FieldLayout = ({field, handleClickCellButtons}) => {
 	return(
 		<div className={styles['game-filed']}>
-			<div>
-				<button>X</button>
-				<button>0</button>
-				<button>X</button>
-			</div>
-			<div>
-				<button>X</button>
-				<button>0</button>
-				<button>X</button>
-			</div>
-			<div>
-				<button>X</button>
-				<button>0</button>
-				<button>X</button>
-			</div>
+			{field.map((item, index) => {
+				return (
+					<button
+						key={index}
+						id={index}
+						onClick={() => handleClickCellButtons(index)}
+						className={styles['cell-button']}
+					>
+						{item}
+					</button>
+				);
+			})}
 		</div>
 	)
 }

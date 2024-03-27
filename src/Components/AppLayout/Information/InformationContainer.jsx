@@ -1,9 +1,7 @@
 import { InformationLayout } from "./InformationLayout"
 
-export const InformationContainer = () => {
+export const InformationContainer = props => {
 	return(
-		<div>
-			<InformationLayout />
-		</div>
+			<InformationLayout {...props}/>
 	)
 }
